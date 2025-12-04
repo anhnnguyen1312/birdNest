@@ -1,0 +1,62 @@
+@use "@/styles/variables" as vars;
+
+.CTAWrapper {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+  background-color: vars.$card-light; // bg-card-light
+  @media (prefers-color-scheme: dark) {
+    color: vars.$card-dark; // text-subtext-dark
+  }
+  .layoutInner {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; // gap-6
+    align-items: center;
+    text-align: center;
+    padding: 2.5rem 1rem; // py-10 px-4
+    h2 {
+      font-size: 1.875rem; // text-3xl
+      font-weight: bold;
+      line-height: 1.25; // leading-tight
+      max-width: 36rem; // max-w-xl
+      color: vars.$text-light; // text-text-light
+      @media (prefers-color-scheme: dark) {
+        color: vars.$text-dark; // text-text-dark
+      }
+    }
+    p {
+      font-size: 1rem; // text-base
+      max-width: 42rem;
+      color: vars.$subtext-light; // text-subtext-light
+      @media (prefers-color-scheme: dark) {
+        color: vars.$subtext-dark; // text-subtext-dark
+      }
+    }
+    button {
+      min-width: 84px;
+      max-width: 480px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-radius: 8px;
+      height: 48px;
+      padding: 0 1.5rem;
+      background-color: vars.$primary;
+      color: #181611;
+      font-weight: bold;
+      font-size: 1rem;
+
+      line-height: 1.5; // leading-normal
+      letter-spacing: 0.015em; // tracking-[0.015em]
+      transition: opacity 0.2s; // transition-opacity
+
+      &:hover {
+        opacity: 0.9; // hover:opacity-90
+      }
+    }
+  }
+}
