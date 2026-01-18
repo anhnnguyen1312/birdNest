@@ -40,21 +40,39 @@ function calculateReadingTime(content: string): number {
 export default function DetailBlogPage() {
   const params = useParams();
   const router = useRouter();
-  const id = params.id as string;
+  const idSlug = params.idSlug as string; // This is now "id-slug" format
+
+  // Parse id and slug from the idSlug parameter
+  // Find the first dash to separate id from slug
+  const firstDashIndex = idSlug.indexOf("-");
+  const id = firstDashIndex !== -1 ? idSlug.substring(0, firstDashIndex) : "";
+  const slug =
+    firstDashIndex !== -1 ? idSlug.substring(firstDashIndex + 1) : ""; // Skip the dash
+  const blogId = parseInt(id);
+  const isValidIdSlug =
+    firstDashIndex !== -1 && !isNaN(blogId) && slug.length > 0;
 
   const [blog, setBlog] = useState<BlogDetail | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [relatedBlogs, setRelatedBlogs] = useState<BlogDetail[]>([]);
 
-  // Fetch blog by ID
+  // Fetch blog by ID and Slug
   useEffect(() => {
+    // Validate idSlug format
+    if (!isValidIdSlug) {
+      router.push("/blog");
+      return;
+    }
+
     const fetchBlog = async () => {
       try {
         setLoading(true);
         setError(null);
 
-        const response = await fetch(`/api/blog/${id}`);
+        const response = await fetch(
+          `/api/blog/${blogId}?slug=${encodeURIComponent(slug)}`
+        );
         const data = await response.json();
 
         if (data.error === 0 && data.blog) {
@@ -79,10 +97,10 @@ export default function DetailBlogPage() {
       }
     };
 
-    if (id) {
+    if (isValidIdSlug) {
       fetchBlog();
     }
-  }, [id]);
+  }, [idSlug, isValidIdSlug, blogId, slug, router]);
 
   // Fetch related blogs
   const fetchRelatedBlogs = async (category: string, excludeId: number) => {
@@ -332,7 +350,7 @@ export default function DetailBlogPage() {
                 {relatedBlogs.map((relatedBlog) => (
                   <Link
                     key={relatedBlog.id}
-                    href={`/detail-blog/${relatedBlog.id}`}
+                    href={`/blog/${relatedBlog.id}-${relatedBlog.slug}`}
                     className="group cursor-pointer"
                   >
                     <article>

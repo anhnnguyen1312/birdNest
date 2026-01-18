@@ -7,7 +7,6 @@ import { useEffect, useState } from "react";
 
 export default function CheckoutPage() {
   const [clientSecret, setClientSecret] = useState("");
-  console.log("clientSecret", clientSecret);
   useEffect(() => {
     fetch("/api/payment/stripe/create-payment-intent", {
       method: "POST",

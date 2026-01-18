@@ -170,7 +170,7 @@ const UserChat = () => {
                 {user?.id && (
                   <ConversationCusTom
                     currentUserId={user.id.toString()}
-                    onSelect={setOtherUserData}
+                    //  onSelect={setOtherUserData}
                     setCond={setCond}
                     condId={cond.id}
                   />

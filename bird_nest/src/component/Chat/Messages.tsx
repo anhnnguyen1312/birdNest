@@ -60,8 +60,7 @@ const Messages = ({ currentUser, otherUser, cond }: Props) => {
 
       return () => unsubscribe();
     }
-  }, [cond.id, otherUser.id]);
-  console.log("message", message);
+  }, [cond.id, convoId, otherUser, otherUser.id]);
   const sendMessage = async () => {
     if (!text.trim()) return;
     const timestamp = Date.now();

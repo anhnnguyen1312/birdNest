@@ -13,7 +13,7 @@ import {
 
 interface Props {
   currentUserId: string;
-  onSelect: (otherUserData: User) => void;
+  // onSelect: (id: string) => void;
   condId: string;
   setCond: (cond: UIConversationItem) => void;
 }
@@ -25,7 +25,7 @@ const data: User = {
 };
 const ConversationCusTom = ({
   currentUserId,
-  onSelect,
+  //onSelect,
   setCond,
   condId,
 }: Props) => {
@@ -95,7 +95,7 @@ const ConversationCusTom = ({
 
   const handleSelect = (cond: UIConversationItem) => {
     setCond(cond);
-    onSelect(data);
+    //onSelect(data);
   };
   return (
     <div className="p-1">

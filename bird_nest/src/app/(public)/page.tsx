@@ -25,9 +25,12 @@ export default async function Home() {
       topProducts = data.hotProducts;
       if (topProducts && topProducts.length > 0) {
         productFilter = topProducts.filter((item) => {
-          // eslint-disable-next-line react-hooks/purity
-          console.log("check", new Date(item.endDate).getTime() < Date.now());
-          return new Date(item.endDate).getTime() > Date.now();
+          // console.log("check", new Date(item.endDate).getTime() < Date.now());
+          if (item.endDate) {
+            const endDate = new Date(item.endDate).getTime();
+            const now = Date.parse(new Date().toISOString());
+            return endDate > now;
+          }
         });
         // console.log(item.endDate,Date.now())''
 

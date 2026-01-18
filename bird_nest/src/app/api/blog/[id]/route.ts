@@ -26,7 +26,25 @@ export async function GET(
       );
     }
 
-    const blog = await Blogs.findByPk(id);
+    // Get slug from query parameters
+    const { searchParams } = new URL(req.url);
+    const slug = searchParams.get("slug");
+
+    console.log("id blog", id, "slug", slug);
+
+    let blog;
+    if (slug) {
+      // Query by both id and slug for security
+      blog = await Blogs.findOne({
+        where: {
+          id: id,
+          slug: slug,
+        },
+      });
+    } else {
+      // Fallback to id only (for backward compatibility)
+      blog = await Blogs.findByPk(id);
+    }
 
     if (!blog) {
       return NextResponse.json(
