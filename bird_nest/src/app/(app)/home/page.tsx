@@ -11,8 +11,10 @@ export default async function Home() {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_BASE_URL}api/products/hot_products`
     );
+    console.log("res", response);
     const data = await response.json();
     fetchProducted = data.hotProducts;
+    console.log("data", data);
   } catch (error) {
     console.error("Error fetching hot products:", error);
   }

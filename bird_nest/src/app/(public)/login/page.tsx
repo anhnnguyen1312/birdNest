@@ -117,7 +117,7 @@ export default function AuthForm() {
         // Refresh user info trong context
         await refreshUser();
         // Redirect tới trang chính (trang chủ)
-        window.location.href = "/";
+        // window.location.href = "/";
       }
     } catch (err) {
       setError("Kết nối máy chủ thất bại!");
