@@ -13,7 +13,10 @@ export default async function Home() {
     );
     console.log("res", response);
     const data = await response.json();
-    fetchProducted = data.hotProducts;
+    if (data.error === 0 && data.hotProducts?.lenghth > 0) {
+      fetchProducted = data.hotProducts;
+      console.log("fetchProducted", fetchProducted);
+    }
     console.log("data", data);
   } catch (error) {
     console.error("Error fetching hot products:", error);

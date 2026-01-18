@@ -97,8 +97,9 @@ export default function ProductList({
         }, 300);
       }
     };
-
-    fetchProducts();
+    if (initialProducts.length === 0) {
+      fetchProducts();
+    }
   }, [initialProducts, searchQuery]);
 
   // Reset page khi filters thay đổi

@@ -58,19 +58,23 @@ const MessageBox = ({
   console.log("?", otherUser.id, cond.participantId);
   useEffect(() => {
     const fetchOrderUser = async () => {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BASE_URL}api/orders/user/${
-          otherUser.id || cond.participantId
-        }`
-      );
-      const data = await res.json();
-      console.log("data order user", data);
-      if (data.error === 0 && data.order?.length > 0) {
-        console.log("data.order", data.order);
+      try {
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_BASE_URL}api/orders/user/${
+            otherUser.id || cond.participantId
+          }`
+        );
+        const data = await res.json();
+        console.log("data order user", data);
+        if (data.error === 0 && data.order?.length > 0) {
+          console.log("data.order", data.order);
 
-        setOrders(data.order);
-      } else {
-        setOrders([]);
+          setOrders(data.order);
+        } else {
+          setOrders([]);
+        }
+      } catch (error) {
+        console.log("error", error);
       }
     };
     fetchOrderUser();

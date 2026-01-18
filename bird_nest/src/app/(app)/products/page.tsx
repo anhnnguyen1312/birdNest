@@ -59,8 +59,12 @@ async function page() {
     }
 
     const data = await res.json();
-    products = data.products;
-    // products = [];
+    if (data.error === 0 && data.products && data.products.length > 0) {
+      products = data.products;
+    } else {
+      products = [];
+    }
+    //
   } catch (error) {
     console.log("Error fetching products in server component:", error);
     // Nếu lỗi, products sẽ là mảng rỗng, client component sẽ handle fallback

@@ -83,15 +83,16 @@ export default function BlogContent() {
 
         if (!res.ok) {
           setError(`Fetch failed with status ${res.status}`);
+        } else {
+          const data = await res.json();
+          console.log("blogs data", data);
+          const listBlogs: Blog[] =
+            data.error === 0 && Array.isArray(data.blogs) ? data.blogs : [];
+
+          setBlogs(listBlogs);
+          setError(null);
         }
 
-        const data = await res.json();
-        console.log("blogs data", data);
-        const listBlogs: Blog[] =
-          data.error === 0 && Array.isArray(data.blogs) ? data.blogs : [];
-
-        setBlogs(listBlogs);
-        setError(null);
         setProgress(100);
       } catch (err) {
         console.error("Error fetching blogs:", err);

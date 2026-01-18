@@ -8,16 +8,20 @@ import { useEffect, useState } from "react";
 export default function CheckoutPage() {
   const [clientSecret, setClientSecret] = useState("");
   useEffect(() => {
-    fetch("/api/payment/stripe/create-payment-intent", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ amount: 10000 }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("data", data);
-        setClientSecret(data.clientSecret);
-      });
+    try {
+      fetch("/api/payment/stripe/create-payment-intent", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ amount: 10000 }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log("data", data);
+          setClientSecret(data.clientSecret);
+        });
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
 
   if (!clientSecret) return <p>Loading...</p>;

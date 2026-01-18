@@ -72,10 +72,16 @@ export default function Checkout({
   console.log("CheckoutSession", CheckoutSession);
   useEffect(() => {
     const fetchProvince = async () => {
-      const res = await fetch("https://provinces.open-api.vn/api/v2/?depth=2");
-      const data = await res.json();
-      if (data && data.length > 0) {
-        setProvince(data);
+      try {
+        const res = await fetch(
+          "https://provinces.open-api.vn/api/v2/?depth=2"
+        );
+        const data = await res.json();
+        if (data && data.length > 0) {
+          setProvince(data);
+        }
+      } catch (error) {
+        console.log(error);
       }
     };
     fetchProvince();

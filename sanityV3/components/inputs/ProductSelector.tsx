@@ -36,6 +36,7 @@ const ProductSelector: React.FC<ProductSelectorProps> = ({value, onChange}) => {
 
   useEffect(() => {
     // Fetch sản phẩm từ API Next.js
+
     fetch(`${process.env.NEXT_PUBLIC_BASE_URL}api/products/all_products`)
       .then((res) => res.json())
       .then((data: Product[]) => setProducts(data))

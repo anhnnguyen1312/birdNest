@@ -142,25 +142,31 @@ function Cart() {
 
   const handleCheckout = () => {
     const postCheckout = async () => {
-      setIsLoadingCart(true);
+      try {
+        setIsLoadingCart(true);
 
-      const res = await fetch("api/checkout-sessions", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          source: "cart",
-        }),
-      });
-      const data = await res.json();
-      if (data.error === 0 && data.checkoutSession) {
-        console.log("data.checkoutSession id", data.checkoutSession.id);
-        // router.push(`/checkout/${data.checkoutSession.id}`);
-        router.push(`/checkout/${data.checkoutSession.id}`);
+        const res = await fetch("api/checkout-sessions", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            source: "cart",
+          }),
+        });
+        const data = await res.json();
+        if (data.error === 0 && data.checkoutSession) {
+          console.log("data.checkoutSession id", data.checkoutSession.id);
+          // router.push(`/checkout/${data.checkoutSession.id}`);
+          router.push(`/checkout/${data.checkoutSession.id}`);
+        }
+        console.log("data post checkoutid", data);
+        setIsLoadingCart(false);
+      } catch (error) {
+        setIsLoadingCart(false);
+
+        console.log(error);
       }
-      console.log("data post checkoutid", data);
-      setIsLoadingCart(false);
     };
     postCheckout();
   };
