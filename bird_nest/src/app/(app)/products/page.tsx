@@ -1,4 +1,4 @@
-import React from "react";
+import { Suspense } from "react";
 import ProductsPageClient from "@/component/ProductPage/ProductsPageClient";
 // import { getAllProducts } from "@/lib/products";
 import { Product } from "@/types";
@@ -49,22 +49,26 @@ async function page() {
   let products: Product[] = [];
 
   try {
-    // products = await getAllProducts();
     const res = await fetch("http://localhost:3000/api/products/all_products");
 
     if (!res.ok) {
-      throw new Error(`Fetch failed with status ${res.status}`);
+      console.log(`Fetch failed with status ${res.status}`);
+      //throw new Error(`Fetch failed with status ${res.status}`);
     }
 
     const data = await res.json();
     products = data.products;
-    console.log("data", data);
+    // products = [];
   } catch (error) {
-    console.error("Error fetching products in server component:", error);
+    console.log("Error fetching products in server component:", error);
     // Nếu lỗi, products sẽ là mảng rỗng, client component sẽ handle fallback
   }
 
-  return <ProductsPageClient initialProducts={products} />;
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ProductsPageClient initialProducts={products} />;
+    </Suspense>
+  );
 }
 
 export default page;

@@ -1,5 +1,4 @@
-import { Table, Column, Model, DataType, HasMany } from "sequelize-typescript";
-// import { ProductVariant } from "./ProductVarient.model";
+import { Table, Column, Model, DataType } from "sequelize-typescript";
 
 @Table({
   tableName: "Products",

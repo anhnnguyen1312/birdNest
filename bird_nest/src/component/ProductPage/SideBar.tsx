@@ -34,6 +34,7 @@ function SideBar() {
 
   // Handler cho category click
   const handleCategoryClick = (category: CategoryFilter) => {
+    console.log(category);
     setCategory(category);
   };
 
@@ -81,6 +82,7 @@ function SideBar() {
             {Object.entries(categoryLabels).map(([key, label]) => {
               const category = key as CategoryFilter;
               const isActive = isActiveCategory(category);
+              console.log("category", category);
               return (
                 <li key={key}>
                   <button

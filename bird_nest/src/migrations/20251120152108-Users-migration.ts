@@ -14,6 +14,9 @@ module.exports = {
       username: {
         type: SequelizeDataTypes.STRING,
       },
+      role: {
+        type: SequelizeDataTypes.STRING,
+      },
       password: {
         type: SequelizeDataTypes.STRING,
       },
@@ -31,4 +34,4 @@ module.exports = {
   async down(queryInterface) {
     await queryInterface.dropTable("Users");
   },
-}; 
+};

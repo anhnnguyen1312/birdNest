@@ -21,7 +21,7 @@ function ProductDetailPage() {
       });
   }, [id]);
   return (
-    <div className="font-display bg-background-light-secondary dark:bg-background-dark-product text-[#221d10] dark:text-[#f8f7f6]">
+    <div className="font-display bg-background-light-secondary dark:bg-background-dark text-[#221d10] dark:text-[#f8f7f6]">
       <div className="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
         <main className="layout-container flex h-full grow flex-col">
           <div className="container mx-auto px-4 py-8 md:py-12">

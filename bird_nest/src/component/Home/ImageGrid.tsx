@@ -2,30 +2,31 @@
 import React, { useEffect, useState } from "react";
 import HotProductItem from "./HotProductItem";
 import { FeaturedProduct } from "@/types/index";
-import fetchWithAuth from "@/helper/fetchWithAuth";
-function ImageGrid() {
-  const [listHotProducts, setListHotProducts] = useState<FeaturedProduct[]>([]);
-  useEffect(() => {
-    const fetchHotProducts = () => {
-      fetchWithAuth("/api/products/hot_products")
-        .then((data) => data.json())
-        .then((data) => {
-          if (data.hotProducts.length > 0) {
-            setListHotProducts(data.hotProducts);
-            console.log(data.hotProducts);
-          }
-        })
-        .catch((e) => console.log(e));
-    };
+// import fetchWithAuth from "@/helper/fetchWithAuth";
+function ImageGrid({ hotProducts }: { hotProducts: FeaturedProduct[] }) {
+  // const [listHotProducts, setListHotProducts] = useState<FeaturedProduct[]>([]);
+  // useEffect(() => {
+  //   const fetchHotProducts = () => {
+  //     fetchWithAuth("/api/products/hot_products")
+  //       .then((data) => data.json())
+  //       .then((data) => {
+  //         if (data.hotProducts.length > 0) {
+  //           setListHotProducts(data.hotProducts);
+  //           console.log(data.hotProducts);
+  //         }
+  //       })
+  //       .catch((e) => console.log(e));
+  //   };
 
-    fetchHotProducts();
-  }, []);
+  //   fetchHotProducts();
+  // }, []);
+  console.log("hotProducts ne", hotProducts);
   const listMapProducts =
-    listHotProducts &&
-    listHotProducts.map((item: FeaturedProduct) => (
+    hotProducts &&
+    hotProducts.map((item: FeaturedProduct) => (
       <HotProductItem
         urlImage={item.products.imageUrlThumb}
-        key={item.id}
+        key={item.products.id}
         name={item.products.name}
         price={item.products.price}
       />

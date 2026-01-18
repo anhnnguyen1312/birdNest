@@ -8,7 +8,7 @@ export default async function fetchWithAuth(
   // nếu access token hết hạn
   if (res.status === 401) {
     console.log("res 401 nè", res);
-    const refreshRes = await fetch("/api/auth/refresh", {
+    const refreshRes = await fetch("/api/auth-backend/refresh", {
       method: "POST",
       credentials: "include", // gửi cookie refresh token
     });

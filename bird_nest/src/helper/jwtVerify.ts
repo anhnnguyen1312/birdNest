@@ -4,13 +4,8 @@ import { ReadonlyRequestCookies } from "next/dist/server/web/spec-extension/adap
 // import { cookies } from "next/headers";
 const JWT_SECRET = process.env.JWT_SECRET || "yentinhhoa";
 
-async function jwtVerify(cookies: {
-  (): Promise<ReadonlyRequestCookies>;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  (): any;
-}) {
-  const cookieStore = await cookies();
-  const accessToken = cookieStore.get("access_token")?.value;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+async function jwtVerify(accessToken: any) {
   if (!accessToken) {
     return false;
   } else {
@@ -25,7 +20,7 @@ async function jwtVerify(cookies: {
       console.log("payload accessToken check", payload);
 
       if (payload.id) {
-        return true;
+        return payload.id;
       } else {
         return false;
       }

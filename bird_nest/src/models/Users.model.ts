@@ -14,7 +14,13 @@ export class Users extends Model {
 
   @Column({
     type: DataType.STRING,
-    allowNull: false,
+    allowNull: true,
+  })
+  declare role: string;
+
+  @Column({
+    type: DataType.STRING,
+    allowNull: true,
     unique: true,
   })
   declare password: string;

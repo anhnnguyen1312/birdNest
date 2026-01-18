@@ -1,12 +1,4 @@
-import {
-  Table,
-  Column,
-  Model,
-  DataType,
-  ForeignKey,
-  BelongsTo,
-} from "sequelize-typescript";
-// import { Products } from "./Products.model";
+import { Table, Column, Model, DataType } from "sequelize-typescript";
 
 @Table({
   tableName: "ProductVariants",
@@ -14,7 +6,7 @@ import {
   freezeTableName: true,
 })
 export class ProductVariant extends Model {
-  // @ForeignKey(() => Products)
+  //@ForeignKey(() => Products)
   @Column({
     type: DataType.INTEGER,
     allowNull: false,

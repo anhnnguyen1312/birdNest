@@ -1,10 +1,11 @@
 "use client";
 import React from "react";
+import Link from "next/link";
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
 
 function Footer() {
   return (
-    <footer className="bg-white dark:bg-background-dark-home border-t border-[#e6e3db] dark:border-[#3a3321]">
+    <footer className="bg-white dark:bg-background-dark border-t border-[#e6e3db] dark:border-[#3a3321]">
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           <div className="col-span-2 md:col-span-1">
@@ -64,28 +65,28 @@ function Footer() {
             </h3>
             <ul className="mt-4 space-y-2">
               <li>
-                <a
-                  className="text-base text-[#897f61] dark:text-gray-400 hover:text-primary dark:hover:text-primary"
-                  href="#"
+                <Link
+                  className="text-base text-[#897f61] dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors"
+                  href="/shipping"
                 >
                   Chính sách giao hàng
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  className="text-base text-[#897f61] dark:text-gray-400 hover:text-primary dark:hover:text-primary"
-                  href="#"
+                <Link
+                  className="text-base text-[#897f61] dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors"
+                  href="/return"
                 >
                   Chính sách đổi trả
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  className="text-base text-[#897f61] dark:text-gray-400 hover:text-primary dark:hover:text-primary"
-                  href="#"
+                <Link
+                  className="text-base text-[#897f61] dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors"
+                  href="/privacy"
                 >
                   Chính sách bảo mật
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

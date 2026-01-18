@@ -1,23 +1,26 @@
+"use client";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Head from "next/head";
 
 import "./global.css";
 import "@/styles/Global.scss";
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+import { AppProvider } from "@/context/AppProvider";
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+// const geistSans = Geist({
+//   variable: "--font-geist-sans",
+//   subsets: ["latin"],
+// });
 
-export const metadata: Metadata = {
-  title: "Yến Sào Tinh Hoa",
-  description: "Yến Sào Tinh Hoa",
-};
+// const geistMono = Geist_Mono({
+//   variable: "--font-geist-mono",
+//   subsets: ["latin"],
+// });
+
+// export const metadata: Metadata = {
+//   title: "Yến Sào Tinh Hoa",
+//   description: "Yến Sào Tinh Hoa",
+// };
 
 export default function RootLayout({
   children,
@@ -25,7 +28,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    // Lớp `.dark` sẽ được thêm/bỏ bởi `ThemeProvider` thông qua `document.documentElement`
+    <html lang="en" suppressHydrationWarning>
       <Head>
         <link
           href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
@@ -33,8 +37,8 @@ export default function RootLayout({
         />
       </Head>
 
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+      <body>
+        <AppProvider>{children}</AppProvider>
       </body>
     </html>
   );

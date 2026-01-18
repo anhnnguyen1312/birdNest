@@ -7,8 +7,10 @@ import Testimonials from "@/component/LandingPage/Testimonials";
 import { FeaturedProduct } from "@/types";
 
 export default async function Home() {
-  let topProducts: FeaturedProduct | null = null;
+  let topProducts: FeaturedProduct[] | null = null;
+  let productFilter: FeaturedProduct[] | null = null;
 
+  let isShowTopProducts = false;
   try {
     const res = await fetch("http://localhost:3000/api/products/top_products");
 
@@ -20,12 +22,24 @@ export default async function Home() {
       );
     } else {
       const data = await res.json();
-      topProducts = data.hotProducts[0];
+      topProducts = data.hotProducts;
+      if (topProducts && topProducts.length > 0) {
+        productFilter = topProducts.filter((item) => {
+          // eslint-disable-next-line react-hooks/purity
+          console.log("check", new Date(item.endDate).getTime() < Date.now());
+          return new Date(item.endDate).getTime() > Date.now();
+        });
+        // console.log(item.endDate,Date.now())''
+
+        if (productFilter.length > 0) {
+          isShowTopProducts = true;
+        }
+      }
     }
   } catch (error) {
     console.error("Error fetching top products:", error);
   }
-
+  console.log("check top product", productFilter, isShowTopProducts);
   return (
     <>
       <div className="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark">
@@ -36,7 +50,9 @@ export default async function Home() {
             {/* <!-- Feature Section --> */}
             <Feature />
 
-            {topProducts && <Promotion topProducts={topProducts} />}
+            {productFilter && isShowTopProducts && (
+              <Promotion topProducts={productFilter[0]} />
+            )}
             {/* <!-- Testimonials Section --> */}
             <Testimonials />
             {/* <!-- Final CTA Section --> */}

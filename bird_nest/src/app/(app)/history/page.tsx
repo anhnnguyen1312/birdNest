@@ -11,7 +11,7 @@ import React from "react";
 
 function page() {
   return (
-    <div className="font-display bg-background-light-secondary dark:bg-background-dark-secondary text-text-light dark:text-gray-200">
+    <div className="font-display bg-background-light-secondary dark:bg-background-dark text-text-light dark:text-gray-200">
       <div className="relative flex min-h-screen w-full flex-col">
         {/* <!-- Main Content --> */}
         <main className="container mx-auto flex flex-1 flex-col px-4 py-8 lg:flex-row lg:gap-8 lg:py-12">

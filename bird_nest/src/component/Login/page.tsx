@@ -60,7 +60,10 @@ export default function Login() {
     setError(null);
 
     try {
-      const url = mode === "login" ? "/api/auth/signin" : "/api/auth/signup";
+      const url =
+        mode === "login"
+          ? "/api/auth-backend/signin"
+          : "/api/auth-backend/signup";
       const res = await fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -76,7 +79,7 @@ export default function Login() {
         // Nếu là đăng ký thành công thì tự động đăng nhập luôn
         if (mode === "signup") {
           // Sau khi đăng ký thành công, gọi luôn API đăng nhập và xử lý như login
-          const loginRes = await fetch("/api/auth/signin", {
+          const loginRes = await fetch("/api/auth-backend/signin", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ username, password }),

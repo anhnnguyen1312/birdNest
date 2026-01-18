@@ -1,7 +1,7 @@
-import Login from "@/component/Login/page";
+// import Login from "@/component/Login/page";
 
-function page() {
-  return <Login />;
-}
+// function page() {
+//   return <Login />;
+// }
 
-export default page;
+// export default page;

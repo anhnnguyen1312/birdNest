@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "types": ["jest", "@testing-library/jest-dom"],
+
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "target": "ES2017",

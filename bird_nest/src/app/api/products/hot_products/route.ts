@@ -8,13 +8,13 @@ import jwtVerify from "@/helper/jwtVerify";
 export async function GET(req: NextRequest) {
   try {
     await sequelize.authenticate();
-    const error = await jwtVerify(cookies);
-    if (!error) {
-      return NextResponse.json(
-        { error: " access Token expired rồi" },
-        { status: 401 }
-      );
-    }
+    // const error = await jwtVerify(cookies);
+    // if (!error) {
+    //   return NextResponse.json(
+    //     { error: " access Token expired rồi" },
+    //     { status: 401 }
+    //   );
+    // }
     const hotProducts = await FeaturedProducts.findAll({
       where: { type: "HOT" },
       include: [

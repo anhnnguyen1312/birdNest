@@ -48,7 +48,7 @@ function InfoReview() {
           </p>
           {/* <!-- RatingSummary Component Section --> */}
           <h3 className="mt-16">Đánh giá từ khách hàng</h3>
-          <div className="flex flex-col md:flex-row flex-wrap gap-x-12 gap-y-8 p-4 bg-background-light-secondary dark:bg-background-dark-product border border-primary/10 rounded-xl not-prose">
+          <div className="flex flex-col md:flex-row flex-wrap gap-x-12 gap-y-8 p-4 bg-background-light-secondary dark:bg-background-dark border border-primary/10 rounded-xl not-prose">
             <div className="flex flex-col gap-2">
               <p className="text-[#221d10] dark:text-[#f8f7f6] text-5xl font-black tracking-tighter">
                 4.8

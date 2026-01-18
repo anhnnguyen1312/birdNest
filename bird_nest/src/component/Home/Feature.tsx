@@ -18,7 +18,7 @@ function Feature() {
         </p>
       </div>
       <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-4 p-0">
-        <div className="flex flex-1 gap-4 rounded-xl border border-[#e6e3db] dark:border-[#3a3321] bg-white dark:bg-background-dark-home p-6 flex-col text-center items-center">
+        <div className="flex flex-1 gap-4 rounded-xl border border-[#e6e3db] dark:border-[#3a3321] bg-white dark:bg-background-dark p-6 flex-col text-center items-center">
           <div className="text-primary" data-size="24px">
             <CheckBadgeIcon className="w-10 h-10 text-primary" />
           </div>
@@ -32,7 +32,7 @@ function Feature() {
             </p>
           </div>
         </div>
-        <div className="flex flex-1 gap-4 rounded-xl border border-[#e6e3db] dark:border-[#3a3321] bg-white dark:bg-background-dark-home p-6 flex-col text-center items-center">
+        <div className="flex flex-1 gap-4 rounded-xl border border-[#e6e3db] dark:border-[#3a3321] bg-white dark:bg-background-dark p-6 flex-col text-center items-center">
           <div className="text-primary" data-size="24px">
             <TruckIcon className="w-10 h-10 text-primary" />
           </div>
@@ -46,7 +46,7 @@ function Feature() {
             </p>
           </div>
         </div>
-        <div className="flex flex-1 gap-4 rounded-xl border border-[#e6e3db] dark:border-[#3a3321] bg-white dark:bg-background-dark-home p-6 flex-col text-center items-center">
+        <div className="flex flex-1 gap-4 rounded-xl border border-[#e6e3db] dark:border-[#3a3321] bg-white dark:bg-background-dark p-6 flex-col text-center items-center">
           <div className="text-primary" data-size="24px">
             <ShieldCheckIcon className="w-10 h-10 text-primary" />
           </div>
