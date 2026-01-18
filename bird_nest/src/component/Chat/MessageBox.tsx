@@ -59,7 +59,7 @@ const MessageBox = ({
   useEffect(() => {
     const fetchOrderUser = async () => {
       const res = await fetch(
-        `http://localhost:3000/api/orders/user/${
+        `${process.env.NEXT_PUBLIC_BASE_URL}api/orders/user/${
           otherUser.id || cond.participantId
         }`
       );

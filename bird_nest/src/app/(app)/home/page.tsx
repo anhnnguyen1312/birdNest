@@ -9,7 +9,7 @@ export default async function Home() {
   let fetchProducted: FeaturedProduct[] = [];
   try {
     const response = await fetch(
-      "http://localhost:3000/api/products/hot_products"
+      `${process.env.NEXT_PUBLIC_BASE_URL}api/products/hot_products`
     );
     const data = await response.json();
     fetchProducted = data.hotProducts;

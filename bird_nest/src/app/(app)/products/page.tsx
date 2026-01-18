@@ -49,7 +49,9 @@ async function page() {
   let products: Product[] = [];
 
   try {
-    const res = await fetch("http://localhost:3000/api/products/all_products");
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}api/products/all_products`
+    );
 
     if (!res.ok) {
       console.log(`Fetch failed with status ${res.status}`);

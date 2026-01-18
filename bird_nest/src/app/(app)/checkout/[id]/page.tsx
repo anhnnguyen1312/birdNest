@@ -48,7 +48,7 @@ async function page({ params }: { params: Promise<{ id: string }> }) {
     }
     const fetchCheckoutSession = async (id: string) => {
       const res = await fetch(
-        `http://localhost:3000/api/checkout-sessions?id=${id}`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}api/checkout-sessions?id=${id}`,
         {
           method: "GET",
           headers: {

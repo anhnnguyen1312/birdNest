@@ -12,7 +12,9 @@ export default async function Home() {
 
   let isShowTopProducts = false;
   try {
-    const res = await fetch("http://localhost:3000/api/products/top_products");
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_BASE_URL}api/products/top_products`
+    );
 
     if (!res.ok) {
       console.error(

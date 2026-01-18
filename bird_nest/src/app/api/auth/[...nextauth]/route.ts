@@ -49,7 +49,7 @@ export const authOptions: NextAuthOptions = {
       console.log("user nè", account?.provider, user);
       try {
         const response = await fetch(
-          `${process.env.API_BASE_URL}/api/auth-backend/oauth/register`,
+          `${process.env.NEXT_PUBLIC_BASE_URL}/api/auth-backend/oauth/register`,
           {
             method: "POST",
             headers: {
@@ -104,7 +104,7 @@ export const authOptions: NextAuthOptions = {
         // }
         try {
           const response = await fetch(
-            `${process.env.API_BASE_URL}/api/auth-backend/oauth/create-token`,
+            `${process.env.NEXT_PUBLIC_BASE_URL}/api/auth-backend/oauth/create-token`,
             {
               method: "POST",
               headers: {
